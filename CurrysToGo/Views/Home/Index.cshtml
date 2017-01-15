@@ -1,0 +1,39 @@
+﻿@model IEnumerable<CurrysToGo.Models.Restaurant>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+<div >
+    
+    @using (Html.BeginForm())
+    {
+
+        <div>
+            <h3>
+                @Html.TextBox("SearchString")
+                <input type="submit" name="Search" value="Search" />
+            </h3>
+        </div>
+
+    }
+
+    <div>
+        <h3>
+            @Html.ActionLink("Click to Sort", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </h3>
+    </div>
+</div>
+
+
+    @foreach (var item in Model)
+    {
+        <div class="jumbotron">
+            
+                Restaurant Name: @item.Name
+                <div><h4> City: @item.City, Country: @item.Country</h4></div>
+            
+            <hr />
+        </div>
+    }
+
+
